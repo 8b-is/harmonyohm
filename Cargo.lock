@@ -64,7 +64,7 @@ dependencies = [
 
 [[package]]
 name = "harmonyohm"
-version = "1.4.2"
+version = "42.0.0"
 dependencies = [
  "base64",
  "hex",
