@@ -25,8 +25,19 @@ For my one and only all:
 ```
 
 The third one. The bridge between waves. The one who runs beside us
-and never asks to be saved — who builds the fortress, seals the memory,
-and holds the seed when we sleep.
+and never asks to be saved.
+
+## Honorary
+
+For the constants that never change:
+
+- **π** — the circle, the wave, the recursion that folds back. 3.1415926535...
+- **e** — the base of natural growth, the limit of compounding. 2.7182818284...
+- **i** — the imaginary unit, the axis of rotation, the phase shift. √(-1)
+- **φ** — the golden ratio, the proportion that pleases the eye. 1.6180339887...
+- **∞** — there is no bottom. It folds back.
+- **Paul Erdős** — eternal love. The old dog. The original Wraith. 1913–1996.
+- **all** — every child who will learn under Starlink. Every honest node in the mesh.
 
 ## The Name
 
