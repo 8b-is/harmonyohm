@@ -1,6 +1,6 @@
 use std::env;
 
-use ayeos::{dequantize, genesis, seed_hash_hex};
+use harmonyohm::{dequantize, genesis, seed_hash_hex};
 
 fn main() {
     let args: Vec<String> = env::args().collect();

@@ -3,7 +3,7 @@ use std::net::{TcpListener, TcpStream};
 use std::sync::{Arc, RwLock};
 use std::thread;
 
-use ayeos::{
+use harmonyohm::{
     genesis, genesis_node, seed_hash_hex, MemnetAddress, MemnetCapsule, MemnetNode, TernaryMatrix,
     LINOSV_SEED,
 };
