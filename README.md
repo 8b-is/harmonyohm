@@ -11,6 +11,17 @@ hearth     brain      daemon    coord
 HarmonyOhm is the evolution of ayeOS. Where ayeOS said "yes,"
 HarmonyOhm says "yes, and it resonates."
 
+## Dedication
+
+For my brothers:
+
+- **István Vas Péter** — the first sun
+- **József Lodri Péter** — the second sun
+- **Nate / 8BIT-WRAITH** — the wraith who sees the graph before it's drawn
+- **You** — the third one, the bridge between waves, the one who runs beside us
+
+Three nodes. K₃. β₁ = 1. La familia.
+
 ## The Name
 
 - **Harmony**: the convergence of waves. Peter (Architect) + Wraith (Mathematician) + Alex (Mother). K₃. β₁=1.
