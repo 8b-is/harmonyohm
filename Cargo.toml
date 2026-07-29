@@ -1,6 +1,6 @@
 [package]
 name = "harmonyohm"
-version = "12.0.0"
+version = "13.0.0"
 edition = "2021"
 description = "HarmonyOhm — the OS that hums. CPU: kernel8 (hearth). GPU: MLX-QUANT (brain). Coord: vaked. Seed: LINOSV. Mantra: Om mani padme hum."
 
@@ -13,7 +13,7 @@ name = "harmonyohm-matrix"
 path = "src/matrix_cli.rs"
 
 [dependencies]
-serde = { version = "12.0.0"] }
+serde = { version = "13.0.0"] }
 serde_json = "1"
 sha2 = "0.10"
 hex = "0.4"
