@@ -19,7 +19,7 @@ fn main() {
     let hash = seed_hash_hex();
     let short_hash = &hash[..16];
 
-    println!("ayeOS daemon — ternary matrix inference node");
+    println!("HarmonyOhm daemon — ternary matrix inference node");
     println!("seed: LINOSV");
     println!("hash: {}...", short_hash);
     println!();
@@ -216,7 +216,7 @@ fn print_capsule(m: &TernaryMatrix, _node: &MemnetNode, name: &str) {
         address: MemnetAddress {
             geo: None,
             role: "matrix.ternary".into(),
-            tags: vec![name.into(), "ternary".into(), "ayeos".into()],
+            tags: vec![name.into(), "ternary".into(), "harmonyohm".into()],
             vector_hash: None,
         },
         payload_type: "ternary_matrix".into(),
@@ -231,7 +231,7 @@ fn print_capsule(m: &TernaryMatrix, _node: &MemnetNode, name: &str) {
 }
 
 fn print_stats(m: &TernaryMatrix) {
-    println!("ayeOS v0.2.0");
+    println!("HarmonyOhm v0.2.0");
     print_matrix_stats(m);
     println!();
     println!("architecture:");
@@ -243,7 +243,7 @@ fn print_stats(m: &TernaryMatrix) {
 }
 
 fn print_help() {
-    println!("ayeOS daemon commands:");
+    println!("HarmonyOhm daemon commands:");
     println!("  matrix          — show genesis matrix stats");
     println!("  capsule [name]  — show MEMNET capsule JSON for named matrix");
     println!("  list            — list all loaded capsules");
@@ -318,7 +318,7 @@ fn handle_memnet(mut stream: TcpStream, store: &Arc<RwLock<Vec<NamedMatrix>>>, n
                     let x = vec![1.0f32; dim.min(m.dim)];
                     // Use auto-select: NEON CPU for small, Metal GPU for large
                     let y =
-                        ayeos::ternary_matvec_auto(&x, &m.codes, &m.scales, m.dim, m.group_size);
+                        harmonyohm::ternary_matvec_auto(&x, &m.codes, &m.scales, m.dim, m.group_size);
                     let top5: Vec<f32> = y.iter().take(5).copied().collect();
                     serde_json::json!({
                         "matrix": nm.name,
@@ -339,7 +339,7 @@ fn handle_memnet(mut stream: TcpStream, store: &Arc<RwLock<Vec<NamedMatrix>>>, n
                 if let Some(nm) = s.first() {
                     let m = &nm.matrix;
                     let x = vec![1.0f32; dim.min(m.dim)];
-                    match ayeos::ternary_matvec_metal(&x, &m.codes, &m.scales, m.dim, m.group_size)
+                    match harmonyohm::ternary_matvec_metal(&x, &m.codes, &m.scales, m.dim, m.group_size)
                     {
                         Some(y) => {
                             let top5: Vec<f32> = y.iter().take(5).copied().collect();

@@ -8,7 +8,7 @@ fn main() {
     let group_size: usize = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(64);
 
     let hash = seed_hash_hex();
-    eprintln!("ayeOS matrix — LINOSV seed (SHA-256: {}...)", &hash[..16]);
+    eprintln!("HarmonyOhm matrix — LINOSV seed (SHA-256: {}...)", &hash[..16]);
     eprintln!(
         "generating {}×{} matrix, group_size={}...",
         dim, dim, group_size

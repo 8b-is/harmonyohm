@@ -41,7 +41,7 @@ pub fn genesis_node(host: &str, port: u16) -> MemnetNode {
         address: MemnetAddress {
             geo: None,
             role: "matrix.ternary.genesis".into(),
-            tags: vec!["linosv".into(), "genesis".into(), "ayeos".into()],
+            tags: vec!["linosv".into(), "genesis".into(), "harmonyohm".into()],
             vector_hash: Some("LINOSV-GENESIS-0".into()),
         },
         host: host.into(),
