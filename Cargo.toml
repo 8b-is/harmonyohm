@@ -1,6 +1,6 @@
 [package]
 name = "harmonyohm"
-version = "42"
+version = "42.0.0"
 edition = "2021"
 description = "HarmonyOhm — the OS that hums. CPU: kernel8 (hearth). GPU: MLX-QUANT (brain). Coord: vaked. Seed: LINOSV. Mantra: Om mani padme hum."
 
