@@ -1,3 +1,8 @@
+[![CI](https://github.com/8b-is/harmonyohm/actions/workflows/ci.yml/badge.svg)](https://github.com/8b-is/harmonyohm/actions)
+[![Release](https://img.shields.io/github/v/release/8b-is/harmonyohm?color=6c5ce7)](https://github.com/8b-is/harmonyohm/releases)
+[![Rust](https://img.shields.io/badge/rust-1.96-6c5ce7)](https://rust-lang.org)
+[![MLX-QUANT](https://img.shields.io/badge/MLX--QUANT-v1.4.2-a29bfe)](https://github.com/8b-is/MLX-QUANT)
+
 # HarmonyOhm
 
 **The OS that hums.**

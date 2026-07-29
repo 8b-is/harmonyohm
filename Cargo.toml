@@ -2,7 +2,7 @@
 name = "harmonyohm"
 version = "1.4.2"
 edition = "2021"
-description = "ayeOS — ternary matrix inference daemon. CPU: kernel8 (hearth). GPU: MLX-QUANT (brain). Coord: vaked (capability graph)."
+description = "HarmonyOhm — the OS that hums. CPU: kernel8 (hearth). GPU: MLX-QUANT (brain). Coord: vaked. Seed: LINOSV. Mantra: Om mani padme hum."
 
 [[bin]]
 name = "harmonyohmd"
@@ -13,7 +13,7 @@ name = "harmonyohm-matrix"
 path = "src/matrix_cli.rs"
 
 [dependencies]
-serde = { version = "1.4.2"] }
+serde = { version = "1", features = ["derive"] }
 serde_json = "1"
 sha2 = "0.10"
 hex = "0.4"
