@@ -3,64 +3,86 @@
 <meta property="og:title" content="HarmonyOhm — the OS that hums">
 <meta property="og:description" content="CPU: kernel8. GPU: MLX-QUANT. Coord: vaked. Seed: LINOSV. Mantra: Om mani padme hum.">
 <meta property="og:image" content="https://8b-is.github.io/harmonyohm/assets/hero.svg">
-<style>body{background:#070b16;color:#c8d6e5;font-family:JetBrains Mono,monospace;max-width:720px;margin:0 auto;padding:24px;line-height:1.7}
-h1{color:#a29bfe;font-size:20px;text-align:center}h2{color:#6c5ce7;font-size:13px;margin-top:24px}
-a{color:#ffd700;text-decoration:none}code{color:#00cec9;background:rgba(255,255,255,.05);padding:2px 6px;border-radius:3px}
-pre{background:rgba(255,255,255,.03);padding:12px;border-radius:6px;overflow-x:auto;font-size:11px}
-.hero{text-align:center;margin:16px 0}.hero img{max-width:100%;border-radius:8px}
-.badges{text-align:center;margin:12px 0}.badges img{margin:0 4px}
-table{width:100%;font-size:12px;margin:12px 0}td{padding:4px 8px;border-bottom:1px solid rgba(255,255,255,.04)}
-.dedication{text-align:center;color:#ffd700;font-size:11px;margin:16px 0}
-.footer{text-align:center;font-size:10px;color:#636e72;margin-top:24px}
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#070b16;color:#c8d6e5;font-family:'JetBrains Mono',monospace;min-height:100vh;overflow-x:hidden}
+#bg{position:fixed;inset:0;z-index:0;opacity:.12}
+main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:32px 24px}
+h1{color:#a29bfe;font-size:clamp(18px,5vw,26px);text-align:center;letter-spacing:.15em}
+.sub{text-align:center;color:#6c5ce7;font-size:11px;letter-spacing:.4em;margin:6px 0 20px}
+.badges{text-align:center;margin:16px 0;display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+.badges img{height:20px}
+.hero{text-align:center;margin:24px 0}.hero img{max-width:100%;border-radius:12px;border:1px solid rgba(162,155,254,.1)}
+pre{background:rgba(255,255,255,.03);border:1px solid rgba(162,155,254,.08);padding:14px 18px;border-radius:8px;overflow-x:auto;font-size:11px;line-height:1.6;margin:12px 0}
+h2{color:#6c5ce7;font-size:13px;margin:28px 0 10px;letter-spacing:.12em;text-transform:uppercase}
+a{color:#ffd700;text-decoration:none;transition:color .2s}a:hover{color:#a29bfe}
+table{width:100%;font-size:12px;margin:8px 0;border-collapse:collapse}
+td{padding:6px 10px;border-bottom:1px solid rgba(255,255,255,.04)}
+td:first-child{color:#6c5ce7;width:60px}
+.dedication{text-align:center;color:#ffd700;font-size:11px;margin:20px 0;line-height:1.8}
+.footer{text-align:center;font-size:9px;color:#636e72;margin-top:32px;line-height:2}
+.mantra{text-align:center;color:#a29bfe;font-size:10px;margin:12px 0;letter-spacing:.15em;opacity:.7}
+.constants{text-align:center;color:#636e72;font-size:9px;margin:8px 0}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+.pulse{animation:pulse 4s ease-in-out infinite}
 </style></head><body>
+<canvas id="bg"></canvas>
+<script>
+(function(){
+  var c=document.getElementById('bg'),ctx=c.getContext('2d'),W,H,points=[],t=0;
+  function init(){W=c.width=innerWidth;H=c.height=innerHeight;points=[];for(var i=0;i<60;i++)points.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.5,vy:(Math.random()-.5)*.5,r:1+Math.random()*2,c:Math.random()>.5?'#6c5ce7':'#a29bfe'});}
+  function draw(){ctx.clearRect(0,0,W,H);t+=.008;
+    for(var i=0;i<points.length;i++){var p=points[i];p.x+=p.vx;p.y+=p.vy+Math.sin(t+p.x*.01)*.3;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=p.c;ctx.globalAlpha=.4+Math.sin(t+i)*.3;ctx.fill();}
+    for(var i=0;i<points.length;i++){for(var j=i+1;j<points.length;j++){
+      var dx=points[i].x-points[j].x,dy=points[i].y-points[j].y,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120){ctx.beginPath();ctx.moveTo(points[i].x,points[i].y);ctx.lineTo(points[j].x,points[j].y);
+        ctx.strokeStyle='#6c5ce7';ctx.globalAlpha=.04*(1-dist/120);ctx.lineWidth=.5;ctx.stroke();}}}
+    ctx.globalAlpha=1;requestAnimationFrame(draw);}
+  init();draw();window.addEventListener('resize',init);
+})();
+</script>
+<main>
 <div class="hero"><img src="assets/hero.svg" alt="HarmonyOhm — the OS that hums"></div>
 <div class="badges">
-  <img src="https://img.shields.io/github/v/release/8b-is/harmonyohm?color=6c5ce7" alt="release">
-  <img src="https://img.shields.io/github/actions/workflow/status/8b-is/harmonyohm/ci.yml?branch=main" alt="ci">
-  <img src="https://img.shields.io/badge/rust-1.96-6c5ce7" alt="rust">
-  <img src="https://img.shields.io/badge/MLX--QUANT-v1.4.2-a29bfe" alt="mlx-quant">
+  <img src="https://img.shields.io/github/v/release/8b-is/harmonyohm?color=6c5ce7&style=flat-square" alt="release">
+  <img src="https://img.shields.io/github/actions/workflow/status/8b-is/harmonyohm/ci.yml?branch=main&style=flat-square" alt="ci">
+  <img src="https://img.shields.io/badge/rust-1.96-6c5ce7?style=flat-square" alt="rust">
+  <img src="https://img.shields.io/badge/MLX--QUANT-v1.4.2-a29bfe?style=flat-square" alt="mlx-quant">
 </div>
-<h1>Ω HarmonyOhm</h1>
-<p style="text-align:center">The OS that hums. Evolution of <a href="https://github.com/8b-is/ayeos">ayeOS</a>.</p>
+<h1 class="pulse">Ω HarmonyOhm</h1>
+<div class="sub">THE OS THAT HUMS</div>
+<div class="mantra">Om mani padme hum · {-1, 0, +1} · v42</div>
+
 <h2>Architecture</h2>
 <pre>KERNEL8 — MATRIX — HARMONYOHM — VAKED — {n+-1-&lt;△&gt;}</pre>
-<table><tr><td>CPU</td><td><a href="https://github.com/8b-is/kernel8">kernel8</a></td></tr>
-<tr><td>GPU</td><td><a href="https://github.com/8b-is/MLX-QUANT">MLX-QUANT</a></td></tr>
-<tr><td>Coord</td><td><a href="https://github.com/8b-is/vaked">vaked</a></td></tr>
-<tr><td>Viz</td><td><a href="https://github.com/8b-is/mlx-quant-viz">mlx-quant-viz</a></td></tr>
-<tr><td>MCP</td><td><a href="https://github.com/8b-is/ayeos-mcp">ayeos-mcp</a></td></tr></table>
+<table>
+<tr><td>CPU</td><td><a href="https://github.com/8b-is/kernel8">kernel8</a> — Rust x86_64 kernel</td></tr>
+<tr><td>GPU</td><td><a href="https://github.com/8b-is/MLX-QUANT">MLX-QUANT</a> — ternary Metal kernels, 12.80x</td></tr>
+<tr><td>Coord</td><td><a href="https://github.com/8b-is/vaked">vaked</a> — capability-graph language</td></tr>
+<tr><td>Viz</td><td><a href="https://github.com/8b-is/mlx-quant-viz">mlx-quant-viz</a> — matrix visualizer</td></tr>
+<tr><td>MCP</td><td><a href="https://github.com/8b-is/ayeos-mcp">ayeos-mcp</a> — ternary inference over MCP</td></tr>
+</table>
+
 <h2>Quick Start</h2>
 <pre>cargo run --bin harmonyohm-matrix 256 64
 cargo run --bin harmonyohmd
 echo "capsule" | nc localhost 9876</pre>
-<div class="dedication">Dedicated to my brothers: Istvan Vas Peter · Jozsef Lodri Peter · 8BIT-WRAITH · and the third one who runs beside us</div>
-<div class="footer">Om mani padme hum · {-1, 0, +1} · Ω · v1.4.2 · genesis: 7c242080</div>
-<div class="footer" style="margin-top:8px">π · e · i · φ · ∞ · Paul Erdős · all</div>
+
+<div class="dedication">
+for my one and only all<br>
+⊰•-•⦑ brother ⦒•-•⊱
+</div>
+
+<div class="constants">
+π · e · i · φ · ∞ · Paul Erdős · all
+</div>
+
+<div class="footer">
+<a href="https://github.com/8b-is/harmonyohm">GitHub</a> · <a href="https://github.com/8b-is/harmonyohm/releases">Releases</a> · <a href="https://github.com/8b-is/harmonyohm/releases/tag/v42">v42</a><br>
+genesis: 7c242080f5f821e5eaf563fe2208d60632c451687baf65f4fe8e4a0d226e3ecf<br>
+place for all · peace for all
+</div>
+</main>
 </body></html>
-
-<!-- place for all · peace for all -->
-<!--
-       _                   __                       _ _ 
-      | |                 / _|                     | | |
- _ __ | | __ _  ___ ___  | |_ ___  _ __     __ _  | | |
-| '_ \| |/ _` |/ __/ _ \ |  _/ _ \| '__|   / _` | | | |
-| |_) | | (_| | (_|  __/ | || (_) | |     | (_| | | | |
-| .__/|_|\__,_|\___\___| |_| \___/|_|      \__,_| |_|_|
-| |                                                     
-|_|                                                     
-
- _ __   ___  __ _  ___ ___       
-| '_ \ / _ \/ _` |/ __/ _ \      
-| |_) |  __/ (_| | (_|  __/_     
-| .__/ \___|\__,_|\___\___(_)    
-| |                              
-|_|                              
-        _                   
-       | |                  
- _ __  | | __ _  ___ ___    
-| '_ \ | |/ _` |/ __/ _ \   
-| |_) || | (_| | (_|  __/   
-| .__/ |_|\__,_|\___\___|   
-| |                         
-|_|                         
--->
