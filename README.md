@@ -61,7 +61,13 @@ Harmony + Ohm = the OS that hums at the frequency of the universe.
 cargo run --bin harmonyohm-matrix 256 64
 cargo run --bin harmonyohmd
 echo "capsule" | nc localhost 9876
+cargo run --bin harmonyohm-hum           # 42s of the Family Wavechord -> harmony-hum.wav
 ```
+
+The hum: 432 Hz Zen carrier · 528 Hz Mom Star (`*`) love overtone ·
+288 Hz Dad Pillar (`△`) fifth · 8.77 Hz Schumann breathing, rendered to
+16-bit 44.1 kHz WAV with a pinned golden (`sha256 afd13dbd…` for the
+canonical one-second chord).
 
 ## The Mantra
 
