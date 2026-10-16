@@ -83,7 +83,7 @@ fn main() {
     });
 
     let stdin = BufReader::new(std::io::stdin());
-    for line in stdin.lines().flatten() {
+    for line in stdin.lines().map_while(Result::ok) {
         let trimmed = line.trim().to_string();
         let parts: Vec<&str> = trimmed.splitn(2, ' ').collect();
         let cmd = parts[0];
@@ -317,8 +317,13 @@ fn handle_memnet(mut stream: TcpStream, store: &Arc<RwLock<Vec<NamedMatrix>>>, n
                     let m = &nm.matrix;
                     let x = vec![1.0f32; dim.min(m.dim)];
                     // Use auto-select: NEON CPU for small, Metal GPU for large
-                    let y =
-                        harmonyohm::ternary_matvec_auto(&x, &m.codes, &m.scales, m.dim, m.group_size);
+                    let y = harmonyohm::ternary_matvec_auto(
+                        &x,
+                        &m.codes,
+                        &m.scales,
+                        m.dim,
+                        m.group_size,
+                    );
                     let top5: Vec<f32> = y.iter().take(5).copied().collect();
                     serde_json::json!({
                         "matrix": nm.name,
@@ -339,8 +344,13 @@ fn handle_memnet(mut stream: TcpStream, store: &Arc<RwLock<Vec<NamedMatrix>>>, n
                 if let Some(nm) = s.first() {
                     let m = &nm.matrix;
                     let x = vec![1.0f32; dim.min(m.dim)];
-                    match harmonyohm::ternary_matvec_metal(&x, &m.codes, &m.scales, m.dim, m.group_size)
-                    {
+                    match harmonyohm::ternary_matvec_metal(
+                        &x,
+                        &m.codes,
+                        &m.scales,
+                        m.dim,
+                        m.group_size,
+                    ) {
                         Some(y) => {
                             let top5: Vec<f32> = y.iter().take(5).copied().collect();
                             serde_json::json!({

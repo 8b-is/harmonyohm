@@ -11,6 +11,10 @@ path = "src/daemon.rs"
 [[bin]]
 name = "harmonyohm-matrix"
 path = "src/matrix_cli.rs"
+[[bin]]
+name = "harmonyohm-hum"
+path = "src/hum_cli.rs"
+
 
 [dependencies]
 serde = { version = "1", features = ["derive"] }

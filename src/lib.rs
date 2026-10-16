@@ -1,3 +1,4 @@
+pub mod hum;
 pub mod memnet;
 pub mod prng;
 pub mod quant;
